@@ -326,7 +326,7 @@ resources:
   nodes_private_auth_shard:
     type: nodes.yaml
     properties:
-      node_count: {get_param: node_count}
+      node_count: {get_param: node_shard_priv_auth_count}
       image: {get_param: image}
       node_flavor: {get_param: node_flavor}
       node_server_group_policies: {get_param: node_server_group_policies}
@@ -342,7 +342,7 @@ resources:
   nodes_private_unauth_shard:
     type: nodes.yaml
     properties:
-      node_count: {get_param: node_count}
+      node_count: {get_param: node_shard_priv_unauth_count}
       image: {get_param: image}
       node_flavor: {get_param: node_flavor}
       node_server_group_policies: {get_param: node_server_group_policies}

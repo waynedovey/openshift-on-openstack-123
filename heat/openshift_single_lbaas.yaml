@@ -83,6 +83,18 @@ parameters:
       Number of infra servers to create.
     default: 1
 
+  infra_shard_private_auth_count:
+    type: number
+    description: >
+      Number of infra servers to create.
+    default: 1
+
+  infra_shard_private_unauth_count:
+    type: number
+    description: >
+      Number of infra servers to create.
+    default: 1        
+
   node_count:
     type: number
     description: >

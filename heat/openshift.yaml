@@ -240,7 +240,7 @@ outputs:
       infras_priv_unauth_shard: {get_attr: [hosts, infras_priv_unauth_shard]}
       infras_priv_auth_shard: {get_attr: [hosts, infras_priv_auth_shard]}      
       nodes: {get_attr: [hosts, node_entries]}
-      nodes_priv_unauth_shard: {get_attr: [hosts nodes_priv_unauth_shard]}
+      nodes_priv_unauth_shard: {get_attr: [hosts, nodes_priv_unauth_shard]}
       nodes_priv_auth_shard: {get_attr: [hosts, nodes_priv_auth_shard]}            
       lb_master: 
         name: lb_master

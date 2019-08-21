@@ -217,6 +217,8 @@ resources:
       external_network: {get_param: external_network}
       service_network: {get_param: service_network}
       service_subnet: {get_param: service_subnet}
+      service_subnet_id_priv_auth: {get_param: service_subnet_id_priv_auth}
+      service_subnet_id_priv_unauth: {get_param: service_subnet_id_priv_unauth}
       masters_pool: {get_attr: [lbaas, masters_pool]}
       infras_pool_http: {get_attr: [lbaas, infras_pool_http]}
       infras_pool_https: {get_attr: [lbaas, infras_pool_https]}

@@ -20,6 +20,7 @@
       bastion_flavor: "{{ bastion_flavor }}"
       master_flavor: "{{ master_flavor }}"
       infra_flavor: "{{ infra_flavor }}"
+      infra_shard_flavor: "{{ infra_shard_flavor }}"
       node_flavor: "{{ node_flavor }}"
       master_count: "{{ master_count }}"
       infra_count: "{{ infra_count }}"

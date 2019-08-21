@@ -11,6 +11,20 @@
       - (infra_count <= 3)
     msg: "Infra count s currently {{ infra_count }} but must be between 1 and 3"
 
+- name: Validate infra private auth shard
+  assert:
+    that:
+      - (infra_shard_private_auth_count >= 1 ) 
+      - (infra_shard_private_auth_count <= 2)
+    msg: "Infra private auth shard count currently {{ infra_shard_private_auth_count }} but must be between 1 and 2"
+
+- name: Validate infra private unauth shard
+  assert:
+    that:
+      - (infra_shard_private_auth_count >= 1 ) 
+      - (infra_shard_private_auth_count <= 2)
+    msg: "Infra private auth shard count currently {{ infra_shard_private_auth_count }} but must be between 1 and 2"
+
 - name: Validate nodes
   assert:
     that:

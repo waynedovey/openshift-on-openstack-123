@@ -23,6 +23,8 @@
       node_flavor: "{{ node_flavor }}"
       master_count: "{{ master_count }}"
       infra_count: "{{ infra_count }}"
+      infra_shard_private_auth_count: "{{ infra_shard_private_auth_count }}"
+      infra_shard_private_unauth_count: "{{ infra_shard_private_unauth_count }}"
       node_count: "{{ node_count }}"
       node_shard_private_auth_count: {get_param: node_shard_private_auth_count} 
       node_shard_private_unauth_count: {get_param: node_shard_private_unauth_count}      

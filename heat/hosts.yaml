@@ -317,7 +317,7 @@ resources:
       ssh_user: {get_param: ssh_user}
       ssh_key_name: {get_param: ssh_key_name}
 
- nodes_priv_auth_shard:
+  nodes_priv_auth_shard:
     type: nodes.yaml
     properties:
       node_count: {get_param: node_count}

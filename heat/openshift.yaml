@@ -46,11 +46,35 @@ parameters:
     type: string
     default: "infra"
 
+  infra_shard_priv_auth_hostname_prefix:
+    description: >
+      The default prefix for infra node hostnames
+    type: string
+    default: "infra-priv-auth"
+
+  infra_shard_priv_unauth_hostname_prefix:
+    description: >
+      The default prefix for infra node hostnames
+    type: string
+    default: "infra-priv-unauth"    
+
   node_hostname_prefix:
     description: >
       The default prefix for nodes server hostnames
     type: string
     default: "node"
+
+  node_shard_priv_auth_hostname_prefix:
+    description: >
+      The default prefix for app node hostnames
+    type: string
+    default: "node-priv-auth"
+
+  node_shard_priv_unauth_hostname_prefix:
+    description: >
+      The default prefix for app node hostnames
+    type: string
+    default: "node-priv-unauth"        
 
   domain_name:
     description: >
@@ -221,7 +245,11 @@ resources:
       bastion_hostname: {get_param: bastion_hostname}
       master_hostname_prefix: {get_param: master_hostname_prefix}
       infra_hostname_prefix: {get_param: infra_hostname_prefix}
+      infra_shard_priv_auth_hostname_prefix: {get_param: infra_shard_priv_auth_hostname_prefix}
+      infra_shard_priv_unauth_hostname_prefix: {get_param: infra_shard_priv_unauth_hostname_prefix}      
       node_hostname_prefix: {get_param: node_hostname_prefix}
+      node_shard_priv_auth_hostname_prefix: {get_param: node_shard_priv_auth_hostname_prefix}
+      node_shard_priv_unauth_hostname_prefix: {get_param: node_shard_priv_unauth_hostname_prefix}
       master_server_group_policies: {get_param: master_server_group_policies}
       infra_server_group_policies: {get_param: infra_server_group_policies}
       node_server_group_policies: {get_param: node_server_group_policies}

@@ -174,6 +174,14 @@ parameters:
     constraints:
     - custom_constraint: nova.flavor
 
+  infra_shard_flavora:
+    description: >
+      The name of the OpenStack instance flavor to use for infa servers
+    type: string
+    default: m1.large
+    constraints:
+    - custom_constraint: nova.flavor
+
   node_flavor:
     description: >
       The name of the OpenStack instance flavor to use for node servers

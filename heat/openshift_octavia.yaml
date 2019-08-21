@@ -28,6 +28,20 @@ parameters:
     constraints:
     - custom_constraint: neutron.subnet
 
+  service_subnet_id_priv_auth:
+    description: >
+      The name or ID of the internal IPv4 space
+    type: string
+    constraints:
+    - custom_constraint: neutron.subnet
+
+  service_subnet_id_priv_unauth:
+    description: >
+      The name or ID of the internal IPv4 space
+    type: string
+    constraints:
+    - custom_constraint: neutron.subnet
+
   bastion_hostname:
     description: >
       The default prefix for bastion server hostnames

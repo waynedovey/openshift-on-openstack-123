@@ -208,6 +208,7 @@ resources:
       bastion_flavor: {get_param: bastion_flavor}
       master_flavor: {get_param: master_flavor}
       infra_flavor: {get_param: infra_flavor}
+      infra_shard_flavor: {get_param: infra_shard_flavor}      
       node_flavor: {get_param: node_flavor}
       bastion_hostname: {get_param: bastion_hostname}
       master_hostname_prefix: {get_param: master_hostname_prefix}
@@ -219,6 +220,8 @@ resources:
       domain_name: {get_param: domain_name}
       master_count: {get_param: master_count}
       infra_count: {get_param: infra_count}
+      infra_shard_private_auth_count: {get_param: infra_shard_private_auth_count}
+      infra_shard_private_unauth_count: {get_param: infra_shard_private_unauth_count}
       node_count: {get_param: node_count}
       node_shard_private_auth_count: {get_param: node_shard_private_auth_count} 
       node_shard_private_unauth_count: {get_param: node_shard_private_unauth_count}

@@ -159,6 +159,13 @@ parameters:
     default: m1.large
     constraints:
 
+  infra_shard_flavor:
+    description: >
+      The name of the OpenStack instance flavor to use for OpenShift nodes
+    type: string
+    default: m1.large
+    constraints:
+
   node_flavor:
     description: >
       The name of the OpenStack instance flavor to use for OpenShift nodes

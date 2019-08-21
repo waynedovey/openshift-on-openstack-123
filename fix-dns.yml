@@ -1,0 +1,33 @@
+---
+- name: Inventory OpenShift Nodes
+  hosts: localhost
+  connection: local
+  become: no
+  gather_facts: no
+  environment:
+    OS_USERNAME: "{{ openstack_user }}"
+    OS_PASSWORD: "{{ openstack_passwd }}"
+    OS_AUTH_URL: "{{ openstack_auth_url }}"
+    OS_PROJECT_NAME: "{{ openstack_project }}"
+    OS_USER_DOMAIN_NAME: Default
+    OS_PROJECT_DOMAIN_NAME: Default
+    OS_IDENTITY_API_VERSION: 3
+
+  tasks:
+  - import_role:
+      name: osp-inventory
+
+- name: Setup All OpenShift Nodes
+  hosts: all
+  gather_facts: yes
+  become: yes
+
+  tasks:
+  - name: Fix DNS
+    lineinfile:
+      path: /etc/resolv.conf
+      regexp: '^nameserver 192.168.122.1'
+      state: absent
+
+  - name: Enable Repos
+    shell: subscription-manager repos     --enable="rhel-7-server-rpms"     --enable="rhel-7-server-extras-rpms"     --enable="rhel-7-server-ose-3.11-rpms"     --enable="rhel-7-server-ansible-2.6-rpms"

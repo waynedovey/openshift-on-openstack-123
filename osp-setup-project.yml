@@ -1,5 +1,5 @@
 ---
-- name: Deploy the OpenShift Cluster Infrastructure
+- name: Setup OpenStack Project
   hosts: localhost
   connection: local
   become: no
@@ -7,7 +7,7 @@
   environment:
     OS_USERNAME: "{{ openstack_user }}"
     OS_PASSWORD: "{{ openstack_passwd }}"
-    OS_AUTH_URL: "{{ openstack_auth_url }}"
+    OS_AUTH_URL: http://{{ openstack_ip }}:5000/v3
     OS_PROJECT_NAME: "{{ openstack_project }}"
     OS_USER_DOMAIN_NAME: Default
     OS_PROJECT_DOMAIN_NAME: Default
@@ -15,16 +15,4 @@
 
   tasks:
   - import_role:
-      name: osp-stack-update
-  - import_role:
-      name: osp-inventory
-
-- name: Configure OpenStack Client on Bastion
-  hosts: bastion
-  become: true
-
-  tasks:
-  - import_role:
-      name: bastion-prep
-
-
+      name: osp-setup-project

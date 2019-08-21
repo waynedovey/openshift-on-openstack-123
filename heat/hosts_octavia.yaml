@@ -300,7 +300,7 @@ resources:
       service_network: {get_param: service_network}
       service_subnet: {get_param: service_subnet_id_priv_unauth}
       security_group: {get_resource: infra_security_group}
-      hostname_prefix: {get_param: infra_shard_priv_unauth_hostname_prefix"}
+      hostname_prefix: {get_param: infra_shard_priv_unauth_hostname_prefix}
       domain_name: {get_param: domain_name}
       ssh_user: {get_param: ssh_user}
       ssh_key_name: {get_param: ssh_key_name}

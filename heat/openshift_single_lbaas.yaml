@@ -28,6 +28,20 @@ parameters:
     constraints:
     - custom_constraint: neutron.subnet
 
+  service_subnet_id_priv_auth:
+    description: >
+      The name or ID of the internal IPv4 space
+    type: string
+    constraints:
+    - custom_constraint: neutron.subnet
+
+  service_subnet_id_priv_unauth:
+    description: >
+      The name or ID of the internal IPv4 space
+    type: string
+    constraints:
+    - custom_constraint: neutron.subnet
+
   bastion_hostname:
     description: >
       The default prefix for bastion server hostnames
@@ -73,6 +87,18 @@ parameters:
     type: number
     description: >
       Number of node servers to create.
+    default: 2
+
+  node_shard_private_auth_count:
+    type: number
+    description: >
+      Number of node_shard_private_auth_count servers to create.
+    default: 2
+
+  node_shard_private_unauth_count:
+    type: number
+    description: >
+      Number of node_shard_private_unauth_count servers to create.
     default: 2
 
   master_server_group_policies:

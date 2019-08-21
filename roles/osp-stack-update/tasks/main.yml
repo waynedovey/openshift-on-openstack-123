@@ -13,6 +13,8 @@
       external_network: "{{ external_network }}"
       service_network: "{{ service_network }}"
       service_subnet: "{{ service_subnet_id }}"
+      service_subnet_id_priv-auth: "{{ service_subnet_id_priv-auth }}"
+      service_subnet_id_priv-unauth: "{{ service_subnet_id_priv-unauth }}"
       ssh_key_name: "{{ ssh_key_name }}"
       image: "{{ image }}"
       bastion_flavor: "{{ bastion_flavor }}"

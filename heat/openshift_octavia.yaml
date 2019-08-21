@@ -87,6 +87,18 @@ parameters:
       Number of node servers to create.
     default: 2
 
+  node_shard_priv_auth_count:
+    type: number
+    description: >
+      Number of app servers to create.
+    default: 1
+
+  node_shard_priv_unauth_count:
+    type: number
+    description: >
+      Number of app servers to create.
+    default: 1
+
   master_server_group_policies:
     type: comma_delimited_list
     description: >

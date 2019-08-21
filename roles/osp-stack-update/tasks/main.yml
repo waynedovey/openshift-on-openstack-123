@@ -26,7 +26,7 @@
       infra_shard_priv_auth_count: "{{ infra_shard_priv_auth_count }}"
       infra_shard_priv_unauth_count: "{{ infra_shard_priv_unauth_count }}"
       node_count: "{{ node_count }}"
-      node_shard_priv_auth_count: "{{ node_shard_priv_auth_count}"
+      node_shard_priv_auth_count: "{{ node_shard_priv_auth_count }}"
       node_shard_priv_unauth_count: "{{ node_shard_priv_unauth_count }}"
       master_server_group_policies: "{{ master_server_group_policies }}"
       infra_server_group_policies: "{{ infra_server_group_policies }}"

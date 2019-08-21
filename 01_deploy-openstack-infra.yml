@@ -25,8 +25,7 @@
       ansible_ssh_private_key_file: "{{ ssh_key_path }}"
 
   - import_role:
-      name: osp-stack-update
-
+      name: osp-stack-create
   - import_role:
       name: osp-inventory
 
@@ -35,7 +34,18 @@
   become: true
 
   tasks:
+  - name: Include vars.yml
+    include_vars:
+      file: vars.yml
+
+  - name: Set ansible_ssh_private_key_file
+    set_fact:
+      ansible_ssh_private_key_file: "{{ ssh_key_path }}"
+
+  - import_role:
+      name: redhat_subscription
+    when: openshift_deployment == "openshift-enterprise" and not rhn_local_repo
+
   - import_role:
       name: bastion-prep
-
 

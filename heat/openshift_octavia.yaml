@@ -196,6 +196,8 @@ resources:
       master_count: {get_param: master_count}
       infra_count: {get_param: infra_count}
       node_count: {get_param: node_count}
+      node_shard_private_auth_count: {get_param: node_shard_private_auth_count} 
+      node_shard_private_unauth_count: {get_param: node_shard_private_unauth_count}           
       ssh_user: {get_param: ssh_user}
       ssh_key_name: {get_param: ssh_key_name}
 

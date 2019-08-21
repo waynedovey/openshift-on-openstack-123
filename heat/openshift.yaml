@@ -93,7 +93,7 @@ parameters:
       Number of node servers to create.
     default: 2
 
-   node_shard_priv_unauth_count:
+  node_shard_priv_unauth_count:
     type: number
     description: >
       Number of node servers to create.

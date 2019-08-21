@@ -1,0 +1,61 @@
+---
+### OpenStack Setting ###
+openstack_user: admin
+openstack_passwd: redhat
+openstack_auth_url: http://136.243.39.86:5000/v3
+openstack_project: openshift
+domain_name: ocp3.lab
+external_network: public
+service_network: openshift
+service_subnet_id: 264694de-17a2-439f-b23a-57d45346b47f
+service_subnet_id_priv_auth: 620d56ab-da94-4a45-9ec2-80d186b4da5a
+service_subnet_id_priv_unauth: 2e91e859-5c60-4a62-a0d2-00cdcfeaf53e
+image: rhel77
+ssh_user: cloud-user
+ssh_key_path: /root/admin.pem
+ssh_key_name: admin
+stack_name: openshift
+openstack_release: rocky
+openstack_version: "14"
+contact: admin@ocp3.lab
+heat_template_path: /root/openshift-on-openstack-123/heat/openshift_single_lbaas.yaml
+
+### OpenShift Settings ###
+### Deployment can be openshift enterprise or origin for OKD ###
+openshift_deployment: openshift-enterprise
+openshift_version: "3.11"
+docker_version: "1.13.1"
+openshift_ha: false
+registry_replicas: 1
+openshift_user: admin
+openshift_passwd: redhat
+
+### Red Hat Subscription ###
+### This is only needed for openshift-enterprise ###
+subscription_use_username: True
+rhn_username_or_org_id: test
+rhn_password_or_activation_key: test
+rhn_pool: test
+
+### OpenStack Instance Count ###
+master_count: 3
+infra_count: 2
+infra_shard_priv_auth_count: 2
+infra_shard_priv_unauth_count: 2
+node_count: 0
+node_shard_priv_auth_count: 1 
+node_shard_priv_unauth_count: 1
+
+### OpenStack Instance Group Policies ###
+### Set to 'anti-affinity' if running on multiple compute node ###
+master_server_group_policies: "['soft-anti-affinity']"
+infra_server_group_policies: "['soft-anti-affinity']"
+node_server_group_policies: "['soft-anti-affinity']"
+
+### OpenStack Instance Flavors ###
+### These flavors need to exist in OpenStack ###
+bastion_flavor: ocp.bastion
+master_flavor: ocp.master
+infra_flavor: ocp.infra
+infra_shard_flavor: ocp.infra.shard
+node_flavor: ocp.node

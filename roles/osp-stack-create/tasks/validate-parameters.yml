@@ -14,8 +14,8 @@
 - name: Validate nodes
   assert:
     that:
-      - (node_count >= 1 ) 
-    msg: "Node count {{ node_count }} must be >= 1"
+      - (node_count >= 0 ) 
+    msg: "Node count {{ node_count }} must be >= 0"
 
 - name: Validate OpenShift HA
   assert:

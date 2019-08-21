@@ -43,6 +43,18 @@ parameters:
       Number of infra servers to create.
     default: 1        
 
+  node_shard_private_auth_count:
+    type: number
+    description: >
+      Number of Node servers to create.
+    default: 1
+
+  node_shard_private_unauth_count:
+    type: number
+    description: >
+      Number of Node servers to create.
+    default: 1
+
   master_count:
     type: number
     description: >
@@ -269,6 +281,38 @@ resources:
       service_subnet: {get_param: service_subnet_id_priv_auth}
       security_group: {get_resource: infra_security_group}
       hostname_prefix: {get_param: infra_hostname_prefix}
+      domain_name: {get_param: domain_name}
+      ssh_user: {get_param: ssh_user}
+      ssh_key_name: {get_param: ssh_key_name}
+
+  nodes_private_auth_shard:
+    type: nodes.yaml
+    properties:
+      node_count: {get_param: node_count}
+      image: {get_param: image}
+      node_flavor: {get_param: node_flavor}
+      node_server_group_policies: {get_param: node_server_group_policies}
+      external_network: {get_param: external_network}
+      service_network: {get_param: service_network}
+      service_subnet: {get_param: service_subnet_id_priv_auth}
+      security_group: {get_resource: node_security_group}
+      hostname_prefix: {get_param: node_hostname_prefix}
+      domain_name: {get_param: domain_name}
+      ssh_user: {get_param: ssh_user}
+      ssh_key_name: {get_param: ssh_key_name}
+
+  nodes_private_unauth_shard:
+    type: nodes.yaml
+    properties:
+      node_count: {get_param: node_count}
+      image: {get_param: image}
+      node_flavor: {get_param: node_flavor}
+      node_server_group_policies: {get_param: node_server_group_policies}
+      external_network: {get_param: external_network}
+      service_network: {get_param: service_network}
+      service_subnet: {get_param: service_subnet_id_priv_unauth}
+      security_group: {get_resource: node_security_group}
+      hostname_prefix: {get_param: node_hostname_prefix}
       domain_name: {get_param: domain_name}
       ssh_user: {get_param: ssh_user}
       ssh_key_name: {get_param: ssh_key_name}

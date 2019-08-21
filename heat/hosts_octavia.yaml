@@ -547,7 +547,10 @@ outputs:
   infras_priv_unauth_shard:
     value: {get_attr: [infras_priv_unauth_shard:, entries]}
   infras_priv_auth_shard:
-    value: {get_attr: [infras_priv_auth_shard:, entries]}        
+    value: {get_attr: [infras_priv_auth_shard:, entries]}
   node_entries:
     value: {get_attr: [nodes, entries]}
-
+  nodes_priv_unauth_shard:
+    value: {get_attr: [nodes_priv_unauth_shard:, entries]}
+  nodes_priv_auth_shard:
+    value: {get_attr: [nodes_priv_auth_shard:, entries]}

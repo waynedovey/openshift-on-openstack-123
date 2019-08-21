@@ -237,7 +237,11 @@ outputs:
         address: {get_attr: [hosts, bastion_ip_address]}
       masters: {get_attr: [hosts, master_entries]}
       infras: {get_attr: [hosts, infra_entries]}
+      infras_priv_unauth_shard: {get_attr: [infras_priv_unauth_shard:, entries]}
+      infras_priv_auth_shard: {get_attr: [infras_priv_auth_shard:, entries]}      
       nodes: {get_attr: [hosts, node_entries]}
+      nodes_priv_unauth_shard: {get_attr: [nodes_priv_unauth_shard:, entries]}
+      nodes_priv_auth_shard: {get_attr: [nodes_priv_auth_shard:, entries]}            
       lb_master: 
         name: lb_master
         address: {get_attr: [lbaas_masters, lb_masters_floatingip]}

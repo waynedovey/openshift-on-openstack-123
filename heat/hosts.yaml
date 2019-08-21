@@ -25,6 +25,18 @@ parameters:
       Number of app nodes to create.
     default: 2
 
+  node_shard_priv_auth_count:
+    type: number
+    description: >
+      Number of app servers to create.
+    default: 1
+
+  node_shard_priv_unauth_count:
+    type: number
+    description: >
+      Number of app servers to create.
+    default: 1
+
   infra_count:
     type: number
     description: >
@@ -282,7 +294,39 @@ resources:
       node_server_group_policies: {get_param: node_server_group_policies}
       external_network: {get_param: external_network}
       service_network: {get_param: service_network}
+      service_subnet: {get_param: service_subnet_id}
+      security_group: {get_resource: node_security_group}
+      hostname_prefix: {get_param: node_hostname_prefix}
+      domain_name: {get_param: domain_name}
+      ssh_user: {get_param: ssh_user}
+      ssh_key_name: {get_param: ssh_key_name}
+
+  nodes_priv_unauth_shard:
+    type: nodes.yaml
+    properties:
+      node_count: {get_param: node_count}
+      image: {get_param: image}
+      node_flavor: {get_param: node_flavor}
+      node_server_group_policies: {get_param: node_server_group_policies}
+      external_network: {get_param: external_network}
+      service_network: {get_param: service_network}
       service_subnet: {get_param: service_subnet_id_priv-unauth}
+      security_group: {get_resource: node_security_group}
+      hostname_prefix: {get_param: node_hostname_prefix}
+      domain_name: {get_param: domain_name}
+      ssh_user: {get_param: ssh_user}
+      ssh_key_name: {get_param: ssh_key_name}
+
+ nodes_priv_auth_shard:
+    type: nodes.yaml
+    properties:
+      node_count: {get_param: node_count}
+      image: {get_param: image}
+      node_flavor: {get_param: node_flavor}
+      node_server_group_policies: {get_param: node_server_group_policies}
+      external_network: {get_param: external_network}
+      service_network: {get_param: service_network}
+      service_subnet: {get_param: service_subnet_id_priv-auth}
       security_group: {get_resource: node_security_group}
       hostname_prefix: {get_param: node_hostname_prefix}
       domain_name: {get_param: domain_name}
@@ -526,6 +570,10 @@ outputs:
     value: {get_attr: [infras_priv_unauth_shard:, entries]}
   infras_priv_auth_shard:
     value: {get_attr: [infras_priv_auth_shard:, entries]}    
+  nodes_priv_unauth_shard:
+    value: {get_attr: [nodes_priv_unauth_shard:, entries]}
+  nodes_priv_auth_shard:
+    value: {get_attr: [nodes_priv_auth_shard:, entries]}
   node_entries:
     value: {get_attr: [nodes, entries]}
 

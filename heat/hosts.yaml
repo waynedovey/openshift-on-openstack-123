@@ -292,7 +292,7 @@ resources:
       infra_server_group_policies: {get_param: infra_server_group_policies}
       external_network: {get_param: external_network}
       service_network: {get_param: service_network}
-      service_subnet: {get_param: service_subnet_id_priv_unauth}
+      service_subnet: {get_param: service_subnet_id_priv_auth}
       security_group: {get_resource: infra_security_group}
       hostname_prefix: {get_param: infra_hostname_prefix}
       domain_name: {get_param: domain_name}

@@ -112,6 +112,20 @@ parameters:
     constraints:
     - custom_constraint: neutron.subnet
 
+  service_subnet_id_priv_auth:
+    description: >
+      The name or ID of the internal IPv4 space
+    type: string
+    constraints:
+    - custom_constraint: neutron.subnet
+
+  service_subnet_id_priv_unauth:
+    description: >
+      The name or ID of the internal IPv4 space
+    type: string
+    constraints:
+    - custom_constraint: neutron.subnet
+
   master_server_group_policies:
     type: comma_delimited_list
     description: >

@@ -14,16 +14,16 @@
 - name: Validate infra private auth shard
   assert:
     that:
-      - (infra_shard_private_auth_count >= 1 ) 
-      - (infra_shard_private_auth_count <= 2)
-    msg: "Infra private auth shard count currently {{ infra_shard_private_auth_count }} but must be between 1 and 2"
+      - (infra_shard_priv_auth_count >= 1 ) 
+      - (infra_shard_priv_auth_count <= 2)
+    msg: "Infra private auth shard count currently {{ infra_shard_priv_auth_count }} but must be between 1 and 2"
 
 - name: Validate infra private unauth shard
   assert:
     that:
-      - (infra_shard_private_auth_count >= 1 ) 
-      - (infra_shard_private_auth_count <= 2)
-    msg: "Infra private auth shard count currently {{ infra_shard_private_auth_count }} but must be between 1 and 2"
+      - (infra_shard_priv_auth_count >= 1 ) 
+      - (infra_shard_priv_auth_count <= 2)
+    msg: "Infra private auth shard count currently {{ infra_shard_priv_auth_count }} but must be between 1 and 2"
 
 - name: Validate nodes
   assert:
@@ -34,14 +34,14 @@
 - name: Validate nodes
   assert:
     that:
-      - (node_shard_private_auth_count >= 0 ) 
-    msg: "Node count {{ node_shard_private_auth_count }} must be >= 0"    
+      - (node_shard_priv_auth_count >= 0 ) 
+    msg: "Node count {{ node_shard_priv_auth_count }} must be >= 0"    
 
 - name: Validate nodes
   assert:
     that:
-      - (node_shard_private_unauth_count >= 0 ) 
-    msg: "Node count {{ node_shard_private_unauth_count }} must be >= 0"    
+      - (node_shard_priv_unauth_count >= 0 ) 
+    msg: "Node count {{ node_shard_priv_unauth_count }} must be >= 0"    
 
 - name: Validate OpenShift HA
   assert:

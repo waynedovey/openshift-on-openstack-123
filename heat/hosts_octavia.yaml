@@ -31,13 +31,13 @@ parameters:
       Number of infra nodes to create.
     default: 1
 
-  infra_shard_private_auth_count:
+  infra_shard_priv_auth_count:
     type: number
     description: >
       Number of infra servers to create.
     default: 1
 
-  infra_shard_private_unauth_count:
+  infra_shard_priv_unauth_count:
     type: number
     description: >
       Number of infra servers to create.
@@ -237,36 +237,36 @@ resources:
       ssh_user: {get_param: ssh_user}
       ssh_key_name: {get_param: ssh_key_name}
 
-  infras_private_unauth_shard:
+  infras_priv_unauth_shard:
     type: infras.yaml
     properties:
       infras_pool_http: {get_param: infras_pool_http}
       infras_pool_https: {get_param: infras_pool_https}
-      infra_count: {get_param: infra_shard_private_unauth_count}
+      infra_count: {get_param: infra_shard_priv_unauth_count}
       image: {get_param: image}
       infra_flavor: {get_param: infra_shard_flavor}
       infra_server_group_policies: {get_param: infra_server_group_policies}
       external_network: {get_param: external_network}
       service_network: {get_param: service_network}
-      service_subnet: {get_param: service_subnet_id_private_unauth}
+      service_subnet: {get_param: service_subnet_id_priv_unauth}
       security_group: {get_resource: infra_security_group}
       hostname_prefix: {get_param: infra_hostname_prefix}
       domain_name: {get_param: domain_name}
       ssh_user: {get_param: ssh_user}
       ssh_key_name: {get_param: ssh_key_name}
 
-  infras_private_auth_shard:
+  infras_priv_auth_shard:
     type: infras.yaml
     properties:
       infras_pool_http: {get_param: infras_pool_http}
       infras_pool_https: {get_param: infras_pool_https}
-      infra_count: {get_param: infra_shard_private_auth_count}
+      infra_count: {get_param: infra_shard_priv_auth_count}
       image: {get_param: image}
       infra_flavor: {get_param: infra_shard_flavor}
       infra_server_group_policies: {get_param: infra_server_group_policies}
       external_network: {get_param: external_network}
       service_network: {get_param: service_network}
-      service_subnet: {get_param: service_subnet_id_private_unauth}
+      service_subnet: {get_param: service_subnet_id_priv_auth}
       security_group: {get_resource: infra_security_group}
       hostname_prefix: {get_param: infra_hostname_prefix}
       domain_name: {get_param: domain_name}
@@ -500,10 +500,10 @@ outputs:
     value: {get_attr: [masters, entries]}
   infra_entries:
     value: {get_attr: [infras, entries]}
-  infras_private_unauth_shard:
-    value: {get_attr: [infras_private_unauth_shard:, entries]}
-  infras_private_auth_shard:
-    value: {get_attr: [infras_private_auth_shard:, entries]}        
+  infras_priv_unauth_shard:
+    value: {get_attr: [infras_priv_unauth_shard:, entries]}
+  infras_priv_auth_shard:
+    value: {get_attr: [infras_priv_auth_shard:, entries]}        
   node_entries:
     value: {get_attr: [nodes, entries]}
 

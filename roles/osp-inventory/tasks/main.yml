@@ -49,6 +49,30 @@
     lb_infra: "{{ stack_output.lb_infra.address }}"
   with_items: "{{ stack_output.infras }}"
 
+- name: Add the priv auth infras to the inventory
+  add_host:
+    name: "{{ item.name }}"
+    groups: infras,all,openshift
+    zone: "{{ domain_name }}"
+    domain_name: "{{ domain_name }}"
+    contact: "{{ contact }}"
+    ansible_user: "{{ ssh_user }}"
+    ansible_ssh_host: "{{ item.address }}"
+    lb_infra: "{{ stack_output.lbaas_infras_priv_auth.address }}"
+  with_items: "{{ stack_output.infras_priv_auth_shard }}"
+
+- name: Add the priv unauth infras to the inventory
+  add_host:
+    name: "{{ item.name }}"
+    groups: infras,all,openshift
+    zone: "{{ domain_name }}"
+    domain_name: "{{ domain_name }}"
+    contact: "{{ contact }}"
+    ansible_user: "{{ ssh_user }}"
+    ansible_ssh_host: "{{ item.address }}"
+    lb_infra: "{{ stack_output.lbaas_infras_priv_unauth.address }}"
+  with_items: "{{ stack_output.infras_priv_unauth_shard }}"
+
 - name: Add the nodes to the inventory
   add_host:
     name: "{{ item.name }}"
@@ -59,3 +83,25 @@
     ansible_user: "{{ ssh_user }}"
     ansible_ssh_host: "{{ item.address }}"
   with_items: "{{ stack_output.nodes }}"
+
+- name: Add the priv auth nodes to the inventory
+  add_host:
+    name: "{{ item.name }}"
+    groups: nodes,all,openshift
+    zone: "{{ domain_name }}"
+    domain_name: "{{ domain_name }}"
+    contact: "{{ contact }}"
+    ansible_user: "{{ ssh_user }}"
+    ansible_ssh_host: "{{ item.address }}"
+  with_items: "{{ stack_output.nodes_priv_auth_shard }}"
+
+- name: Add the priv unauth nodes to the inventory
+  add_host:
+    name: "{{ item.name }}"
+    groups: nodes,all,openshift
+    zone: "{{ domain_name }}"
+    domain_name: "{{ domain_name }}"
+    contact: "{{ contact }}"
+    ansible_user: "{{ ssh_user }}"
+    ansible_ssh_host: "{{ item.address }}"
+  with_items: "{{ stack_output.nodes_priv_unauth_shard }}"

@@ -18,30 +18,50 @@
 
 - name: Configure masters dynamically
   lineinfile: dest=/home/{{ ssh_user }}/openshift-inventory
+<<<<<<< HEAD
     line="{{ item }} openshift_hostname={{ item }} server_type=\"master\""
+=======
+    line="{{ item }} server_type=\"master\""
+>>>>>>> 6b76577e2a8bf04939c346b7f13da8cd458030a8
     insertafter="^#?\[masters\]"
   with_items: "{{ groups['masters'] }}"
 
 - name: Configure etcd nodes dynamically
   lineinfile: dest=/home/{{ ssh_user }}/openshift-inventory
+<<<<<<< HEAD
     line="{{ item }} openshift_hostname={{ item }} server_type=\"etcd\""
+=======
+    line="{{ item }} server_type=\"etcd\""
+>>>>>>> 6b76577e2a8bf04939c346b7f13da8cd458030a8
     insertafter="^#?\[etcd\]"
   with_items: "{{ groups['masters'] }}"
 
 - name: Configure master nodes dynamically
   lineinfile: dest=/home/{{ ssh_user }}/openshift-inventory
+<<<<<<< HEAD
     line="{{ item }} openshift_hostname={{ item }} openshift_schedulable=True openshift_node_group_name='node-config-master'"
+=======
+    line="{{ item }} openshift_schedulable=True openshift_node_group_name='node-config-master-crio'"
+>>>>>>> 6b76577e2a8bf04939c346b7f13da8cd458030a8
     insertafter="^#?\[nodes\]"
   with_items: "{{ groups['masters'] }}"
 
 - name: Configure infra nodes dynamically
   lineinfile: dest=/home/{{ ssh_user }}/openshift-inventory
+<<<<<<< HEAD
     line="{{ item }} openshift_hostname={{ item }} openshift_schedulable=True openshift_node_group_name='node-config-infra'"
+=======
+    line="{{ item }} openshift_schedulable=True openshift_node_group_name='node-config-infra-crio'"
+>>>>>>> 6b76577e2a8bf04939c346b7f13da8cd458030a8
     insertafter="^#?{{ master_regex }}"
   with_items: "{{ groups['infras'] }}"
 
 - name: Configure app nodes dynamically
   lineinfile: dest=/home/{{ ssh_user }}/openshift-inventory
+<<<<<<< HEAD
     line="{{ item }} openshift_hostname={{ item }} openshift_schedulable=True openshift_node_group_name='node-config-compute'"
+=======
+    line="{{ item }} openshift_schedulable=True openshift_node_group_name='node-config-compute-crio'"
+>>>>>>> 6b76577e2a8bf04939c346b7f13da8cd458030a8
     insertafter="^#?{{ infra_regex }}"
   with_items: "{{ groups['nodes'] }}"

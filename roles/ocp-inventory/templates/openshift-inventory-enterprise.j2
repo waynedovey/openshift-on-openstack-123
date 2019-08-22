@@ -12,12 +12,34 @@ ansible_become=yes
 
 # OpenShift Deployment, enterprise of course!
 openshift_deployment_type={{ openshift_deployment }}
+<<<<<<< HEAD
 oreg_url=registry.redhat.io/openshift3/ose-${component}:${version}
 oreg_auth_user={{ rhn_username_or_org_id }}
 oreg_auth_password={{ rhn_password_or_activation_key }}
 os_firewall_use_firewalld=true
 openshift_clock_enabled=true
 
+=======
+{% if not bastion_repo %}
+oreg_url=registry.redhat.io/openshift3/ose-${component}:${version}
+oreg_auth_user={{ rhn_username_or_org_id }}
+oreg_auth_password={{ rhn_password_or_activation_key }}
+{% else %}
+oreg_url={{local_registry}}/openshift3/ose-${component}:${version}
+oreg_auth_user={{registry_username}}
+oreg_auth_password={{registry_password}}
+openshift_examples_modify_imagestreams=true
+{% endif %}
+os_firewall_use_firewalld=true
+openshift_clock_enabled=true
+
+# Enable CRI-O + Docker
+openshift_use_crio=True
+openshift_use_crio_only=False
+openshift_crio_enable_docker_gc=True
+openshift_crio_var_sock='unix:///var/run/crio/crio.sock'
+
+>>>>>>> 6b76577e2a8bf04939c346b7f13da8cd458030a8
 # Set Domain for Apps
 openshift_master_default_subdomain=apps.{{ hostvars['infra0']['lb_infra'] }}.xip.io
 
@@ -107,6 +129,7 @@ openshift_metrics_heapster_requests_memory=256Mi
 openshift_metrics_heapster_limits_memory=500Mi
 
 # Deploy Prometheus
+<<<<<<< HEAD
 openshift_hosted_prometheus_deploy=false
 openshift_prometheus_node_selector={"node-role.kubernetes.io/infra":"true"}
 
@@ -117,6 +140,14 @@ openshift_grafana_prometheus_namespace=openshift-metrics
 openshift_grafana_node_selector={"node-role.kubernetes.io/infra":"true"}
 openshift_grafana_storage_type=pvc
 openshift_grafana_pvc_size=2Gi
+=======
+openshift_cluster_monitoring_operator_install=true
+openshift_cluster_monitoring_operator_prometheus_storage_capacity=50Gi
+openshift_cluster_monitoring_operator_alertmanager_storage_capacity=2Gi
+openshift_cluster_monitoring_operator_node_selector={"node-role.kubernetes.io/infra":"true"}
+openshift_cluster_monitoring_operator_prometheus_storage_enabled=true
+openshift_cluster_monitoring_operator_alertmanager_storage_enabled=true
+>>>>>>> 6b76577e2a8bf04939c346b7f13da8cd458030a8
 
 # OpenShift Template Service Broker
 openshift_template_service_broker_namespaces=['openshift']

@@ -308,9 +308,9 @@ outputs:
         address: {get_attr: [lbaas, lb_floatingip]}
       lbaas_infras_priv_auth: 
         name: lbaas_infras_priv_auth
-        address: {get_attr: [lbaas_infras_priv_auth, lb_infras_floatingip]}
+        address: {get_attr: [lbaas_infras_priv_auth, lb_floatingip]}
       lbaas_infras_priv_unauth: 
         name: lbaas_infras_priv_unauth
-        address: {get_attr: [lbaas_infras_priv_unauth, lb_infras_floatingip]}
+        address: {get_attr: [lbaas_infras_priv_unauth, lb_floatingip]}
   openshift_master_url:
     value: {get_attr: [lbaas, lburl]}

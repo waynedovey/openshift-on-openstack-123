@@ -10,21 +10,14 @@ nodes
 ansible_ssh_user={{ ssh_user }}
 ansible_become=yes
 
-<<<<<<< HEAD
 # OpenShift Deployment, enterprise of course!
-=======
-# OpenShift Deployment, not enterprise, you are a loser!
->>>>>>> 6b76577e2a8bf04939c346b7f13da8cd458030a8
 openshift_deployment_type={{ openshift_deployment }}
 os_firewall_use_firewalld=true
 openshift_clock_enabled=true
 
-<<<<<<< HEAD
 # OKD Additional repos in case not released yet to centos
 #openshift_additional_repos=[{'id': 'centos-okd-ci', 'name': 'centos-okd-ci', 'baseurl' :'https://rpms.svc.ci.openshift.org/openshift-origin-v3.11', 'gpgcheck' :'0', 'enabled' :'1'}]
 
-=======
->>>>>>> 6b76577e2a8bf04939c346b7f13da8cd458030a8
 # Set Domain for Apps
 openshift_master_default_subdomain=apps.{{ hostvars['infra0']['lb_infra'] }}.xip.io
 
@@ -114,7 +107,6 @@ openshift_metrics_heapster_requests_memory=256Mi
 openshift_metrics_heapster_limits_memory=500Mi
 
 # Deploy Prometheus
-<<<<<<< HEAD
 openshift_hosted_prometheus_deploy=false
 openshift_prometheus_node_selector={"node-role.kubernetes.io/infra":"true"}
 
@@ -125,14 +117,6 @@ openshift_grafana_prometheus_namespace=openshift-metrics
 openshift_grafana_node_selector={"node-role.kubernetes.io/infra":"true"}
 openshift_grafana_storage_type=pvc
 openshift_grafana_pvc_size=2Gi
-=======
-openshift_cluster_monitoring_operator_install=true
-openshift_cluster_monitoring_operator_prometheus_storage_capacity=50Gi
-openshift_cluster_monitoring_operator_alertmanager_storage_capacity=2Gi
-openshift_cluster_monitoring_operator_node_selector={"node-role.kubernetes.io/infra":"true"}
-openshift_cluster_monitoring_operator_prometheus_storage_enabled=true
-openshift_cluster_monitoring_operator_alertmanager_storage_enabled=true
->>>>>>> 6b76577e2a8bf04939c346b7f13da8cd458030a8
 
 # OpenShift Template Service Broker
 openshift_template_service_broker_namespaces=['openshift']

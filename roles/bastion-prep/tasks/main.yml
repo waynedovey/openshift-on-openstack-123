@@ -3,19 +3,7 @@
   retries: 5
   delay: 5
   with_items: "{{repos_bastion}}"
-  when: openshift_deployment == "openshift-enterprise" and not rhn_local_repo
-
-- name: Enable correct local repos
-  yum_repository:
-    name: "{{item}}"
-    description: "{{item}}"
-    file: openshift
-    baseurl: "{{rhn_local_repo_base_url}}/{{item}}"
-    gpgcheck: no
-  with_items:
-    - "{{repos_bastion}}"
-    - "{{repos}}"
-  when: openshift_deployment == "openshift-enterprise" and rhn_local_repo
+  when: openshift_deployment == "openshift-enterprise"
 
 - name: Enable bastion specific repos (centos)
   yum:
@@ -85,18 +73,10 @@
     version: release-{{ openshift_version }}
   when: openshift_deployment == "origin"
 
-- name: Create ~/.ssh/ directory
-  become: false
-  file:
-    path: ~/.ssh
-    state: directory
-    mode: 0700
-
 - name: Copy OpenStack ssh key to bastion
-  become: false
   copy:
     src: "{{ ssh_key_path }}"
-    dest: ~/.ssh/id_rsa
+    dest: /home/{{ ssh_user }}/admin.pem
     mode: 0400
     owner: "{{ ssh_user }}"
 
@@ -106,13 +86,5 @@
     dest: /home/{{ ssh_user }}
     directory_mode: 0755
     mode: 0755
-    owner: "{{ ssh_user }}"
-    group: "{{ ssh_user }}"
-
-- name: Copy ansible.cfg to user home dir
-  copy:
-    src: "{{ playbook_dir }}/ansible.cfg"
-    dest: /home/{{ ssh_user }}/.ansible.cfg
-    mode: 0644
     owner: "{{ ssh_user }}"
     group: "{{ ssh_user }}"

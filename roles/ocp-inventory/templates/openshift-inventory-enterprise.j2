@@ -48,7 +48,7 @@ openshift_master_identity_providers=[{'name': 'keystone', 'login': 'true', 'chal
 #openshift_master_htpasswd_users={'{{ openshift_user }}': '{{ openshift_passwd }}'}
 
 # Set networking to multi-tenant
-os_sdn_network_plugin_name='redhat/openshift-ovs-multitenant'
+os_sdn_network_plugin_name='redhat/openshift-ovs-networkpolicy'
 
 # Configure SDN cluster network and kubernetes service CIDR blocks. These
 # network blocks should be private and should not conflict with network blocks

@@ -5,15 +5,6 @@
   with_items: "{{repos_bastion}}"
   when: openshift_deployment == "openshift-enterprise"
 
-- name: Enable bastion specific repos (centos)
-  yum:
-    name: "{{item}}"
-    state: latest
-  retries: 5
-  delay: 5
-  with_items: "{{origin_repos_bastion}}"
-  when: openshift_deployment == "origin"
-
 - name: Ensure that required packages are installed on bastion
   yum:
     name: "{{item}}"
@@ -36,13 +27,6 @@
   with_items: "{{packages_bastion_openstack}}"
   when: openshift_deployment == "openshift-enterprise"
 
-- name: Install required openstack packages for bastion (centos)
-  yum:
-    name: "{{item}}"
-    state: installed
-  with_items: "{{packages_bastion_openstack}}"
-  when: openshift_deployment == "origin"
-
 - name: Install required installer packages for bastion (redhat)
   yum:
     name: "{{item}}"
@@ -50,28 +34,6 @@
     disablerepo: rhel-7-server-openstack-{{ openstack_version }}-tools-rpms
   with_items: "{{ packages_bastion_openshift }}"
   when: openshift_deployment == "openshift-enterprise"
-
-- name: Install required installer packages for bastion (centos)
-  yum:
-    name: "{{item}}"
-    state: installed
-  with_items: "{{packages_bastion_origin}}"
-  when: openshift_deployment == "origin"
-
-- name: Disable epel repository (centos)
-  yum_repository:
-    name: epel
-    baseurl: https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
-    description: "EPEL"
-    enabled: no
-  when: openshift_deployment == "origin"
-
-- name: Clone OKD repository
-  git:
-    repo: 'https://github.com/openshift/openshift-ansible'
-    dest: /home/{{ ssh_user }}/openshift-ansible
-    version: release-{{ openshift_version }}
-  when: openshift_deployment == "origin"
 
 - name: Copy OpenStack ssh key to bastion
   copy:

@@ -276,15 +276,6 @@ metrics-server Install       : Complete (0:00:00)
 Service Catalog Install      : Complete (0:01:57)
 ```
 
-Login in to UI.
-```
-https://openshift.144.76.134.226.xip.io:8443
-```
-
-# OKD Installation (in case you aren't doing OpenShift Entrerprise)
-OKD formally called OpenShift Origin (community version) is also supported starting with release-3.11 branch. To use OKD make sure you have a centos 7.5 image and set 'openshift_deployment=origin' in the vars file.
-
-Once you have run the 01_deploy-openstack-infra.yml and 03_prepare-openshift.yml playbooks as documented above run the following to install openshift OKD from bastion.
 
 Prerequisites playbook
 ```
@@ -445,10 +436,6 @@ bs-version=v2
 ```
 
 The post-openshift.yml playbook takes care of setting v2 for cinder automatically.
-
-## Issue 2: Hosted Install Fails
-
-The registry sometimes fails to complete install due to host resolution of xip.io. Not sure if this is issue in OpenShift 3.7 or environment. Simply re-running hosted playbook resolved the issue and resulted in successful installation.
 
 ## Issue 3: Ansible 2.7 causes control plane to not start
 

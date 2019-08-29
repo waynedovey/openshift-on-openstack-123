@@ -71,7 +71,7 @@ outputs:
         params:
           IP_ADDRESS: { get_attr: [ floating_ip, floating_ip_address ] }
           PORT: { get_param: lb_port }
-          NAME: openshift
-          DOMAIN: xip.io
+          NAME: master
+          DOMAIN: redhatlabs.dev
     description: >
       This URL is the "external" URL to access openshift

@@ -125,9 +125,8 @@ outputs:
   lburl:
     value:
       str_replace:
-        template: https://NAME.IP_ADDRESS.DOMAIN:PORT
+        template: https://NAME.DOMAIN:PORT
         params:
-          IP_ADDRESS: { get_attr: [ floating_ip, floating_ip_address ] }
           PORT: { get_param: lb_port_master }
           NAME: master
           DOMAIN: redhatlabs.dev

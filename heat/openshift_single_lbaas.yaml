@@ -236,13 +236,13 @@ resources:
       service_subnet: {get_param: service_subnet}
 
   lbaas_infras_priv_auth:
-    type: lbaas_single.yaml
+    type: lbaas_single_infras_priv_auth.yaml
     properties:
       external_network: {get_param: external_network}
       service_subnet: {get_param: service_subnet_id_priv_auth}
 
   lbaas_infras_priv_unauth:
-    type: lbaas_single.yaml
+    type: lbaas_single_infras_priv_unauth.yaml
     properties:
       external_network: {get_param: external_network}
       service_subnet: {get_param: service_subnet_id_priv_unauth}

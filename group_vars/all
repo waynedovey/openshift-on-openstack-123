@@ -11,6 +11,8 @@ packages:
   - psacct
   - yum-utils
   - NetworkManager
+  - vim
+  - screen
 packages_bastion_openshift:
   - openshift-ansible
 packages_bastion_openstack:

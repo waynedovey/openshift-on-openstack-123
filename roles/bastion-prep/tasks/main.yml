@@ -35,12 +35,21 @@
   with_items: "{{ packages_bastion_openshift }}"
   when: openshift_deployment == "openshift-enterprise"
 
+- name: Generate the ssh keys
+  command : ssh-keygen -q -t rsa -f /home/{{ ssh_user }}/.ssh/id_rsa -C "" -N ""
+
 - name: Copy OpenStack ssh key to bastion
   copy:
     src: "{{ ssh_key_path }}"
-    dest: /home/{{ ssh_user }}/admin.pem
+    #dest: /home/{{ ssh_user }}/admin.pem
+    dest: /home/{{ ssh_user }}/.ssh/id_rsa
     mode: 0400
     owner: "{{ ssh_user }}"
+
+- name: Clean up ssh file
+  file: 
+    path: /home/{{ ssh_user }}/.ssh/id_rsa.pub
+    state: absent
 
 - name: Copy playbooks to bastion
   copy:

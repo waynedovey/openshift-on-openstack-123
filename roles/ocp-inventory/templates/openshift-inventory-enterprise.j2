@@ -15,7 +15,7 @@ openshift_deployment_type={{ openshift_deployment }}
 oreg_url=registry.redhat.io/openshift3/ose-${component}:${version}
 oreg_auth_user={{ rhn_username_or_org_id }}
 oreg_auth_password={{ rhn_password_or_activation_key }}
-os_firewall_use_firewalld=true
+oreg_test_login=false
 openshift_clock_enabled=true
 
 # Set Domain for Apps
@@ -123,11 +123,9 @@ openshift_grafana_node_selector={"node-role.kubernetes.io/infra":"true"}
 openshift_grafana_storage_type=pvc
 openshift_grafana_pvc_size=2Gi
 
-# OpenShift Template Service Broker
-openshift_template_service_broker_namespaces=['openshift']
-
-# Deploy Service Catalog
-openshift_enable_service_catalog=true
+#Disable add on services
+template_service_broker_install=false
+openshift_enable_service_catalog=false
 
 # host group for masters
 [masters]

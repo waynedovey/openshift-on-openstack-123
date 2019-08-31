@@ -42,7 +42,6 @@
 - name: Copy OpenStack ssh key to bastion
   copy:
     src: "{{ ssh_key_path }}"
-    #dest: /home/{{ ssh_user }}/admin.pem
     dest: /home/{{ ssh_user }}/.ssh/id_rsa
     mode: 0400
     owner: "{{ ssh_user }}"
@@ -51,6 +50,15 @@
   file: 
     path: /home/{{ ssh_user }}/.ssh/id_rsa.pub
     state: absent
+
+- name: Clean up default Ansible CFG 
+  file: 
+    path: /etc/ansible/ansible.cfg
+    state: absent
+
+- name: New Ansible CFG
+  command : yes | cp /home/cloud-user/openshift-on-openstack-123/ansible.cfg /etc/ansible/ansible.cfg
+  ignore_errors: yes
 
 - name: Copy playbooks to bastion
   copy:

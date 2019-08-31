@@ -37,6 +37,7 @@
 
 - name: Generate the ssh keys
   command : ssh-keygen -q -t rsa -f /home/{{ ssh_user }}/.ssh/id_rsa -C "" -N ""
+  ignore_errors: yes
 
 - name: Copy OpenStack ssh key to bastion
   copy:

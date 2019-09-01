@@ -31,8 +31,8 @@ openshift_override_hostname_check=true
 
 # Certs
 openshift_master_overwrite_named_certificates=true
-openshift_master_named_certificates=[{"certfile": "{{ inventory_dir }}/ssl-certs/fullchain.cer", "keyfile": "{{ inventory_dir }}/ssl-certs/redhatlabs.dev.key", "cafile": "{{ inventory_dir }}/ssl-certs/ca.crt"}]
-openshift_hosted_router_certificate=[{"certfile": "{{ inventory_dir }}/ssl-certs/fullchain.cer", "keyfile": "{{ inventory_dir }}/ssl-certs/redhatlabs.dev.key", "cafile": "{{ inventory_dir }}/ssl-certs/ca.crt"}]
+openshift_master_named_certificates={"certfile": "{{ inventory_dir }}/ssl-certs/fullchain.cer", "keyfile": "{{ inventory_dir }}/ssl-certs/redhatlabs.dev.key", "cafile": "{{ inventory_dir }}/ssl-certs/ca.crt"}
+openshift_hosted_router_certificate={"certfile": "{{ inventory_dir }}/ssl-certs/fullchain.cer", "keyfile": "{{ inventory_dir }}/ssl-certs/redhatlabs.dev.key", "cafile": "{{ inventory_dir }}/ssl-certs/ca.crt"}
 
 # Openstack
 openshift_cloudprovider_kind=openstack

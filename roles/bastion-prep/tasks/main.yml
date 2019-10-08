@@ -56,9 +56,9 @@
     path: /etc/ansible/ansible.cfg
     state: absent
 
-- name: New Ansible CFG
-  command : yes | cp /home/cloud-user/openshift-on-openstack-123/ansible.cfg /etc/ansible/ansible.cfg
-  ignore_errors: yes
+#- name: New Ansible CFG
+#  command : yes | cp /home/cloud-user/openshift-on-openstack-123/ansible.cfg /etc/ansible/ansible.cfg
+#:  ignore_errors: yes
 
 - name: Copy playbooks to bastion
   copy:
